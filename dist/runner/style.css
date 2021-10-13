@@ -1,0 +1,73 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#error {
+    position: fixed;
+    background-color: #ff6060;
+    color: #fff;
+    z-index: 999;
+    width: 100%;
+}
+
+#error-message {
+    font-family: monospace;
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+#cli {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    font-family: monospace;
+    color: #fff;
+    overflow-y: scroll;
+}
+
+#cli > div {
+    padding: 15px 15px 50px 15px;
+    white-space: pre;
+    line-height: 18px;
+}
+
+.line {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.line-inner {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.readline {
+    color: #fff;
+    border: none;
+    caret-color: #fff;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 20px;
+    z-index: 9999;
+    background-color: #111;
+    padding: 6px 12px 12px 12px;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: system-ui;
+    letter-spacing: 1px;
+}
+
+.readline:focus-visible {
+    outline: none;
+    border-bottom: 1px #fff solid;
+}
+
+.syslog {
+    color: #666;
+    font-size: 10px;
+}
