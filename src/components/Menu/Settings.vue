@@ -50,8 +50,8 @@
         },
         methods: {
             reset () {
-                this.editorFont = 14;
-                this.background = "1";
+                this.editorFont = 12;
+                this.background = "2";
                 this.editorTheme = "funky";
             }
         },
