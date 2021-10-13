@@ -112,7 +112,8 @@
             title: 'About',
             icon: 'InformationOutline',
           }
-        ]
+        ],
+        cache: Math.random()
       }
     },
     methods: {
@@ -169,7 +170,7 @@
       createIframe (code) {
         const iframe = document.createElement("iframe");
 
-        iframe.src = "run.html";
+        iframe.src = `run.html?cache=${this.cache}`;
 
         iframe.onload = () => {
           iframe.contentDocument
