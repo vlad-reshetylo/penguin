@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/runner/style.css">
+    <title>Execute</title>
+  </head>
+  <body>
+    <div id="error" style="display: none;">
+        <div id="error-message"></div>
+    </div>
+    <div id="cli">
+        <div></div>
+    </div>
+    <script>
+        const $ = query => document.querySelector(query);
+
+        const cli            = $('#cli').querySelector('div');
+        const inputContainer = $('#cli');
+
+        const notifyAboutError = error => {
+            const stack = error.stack.toString().split("\n");
+
+            $('#error').style.display = "";
+            $('#error-message').innerHTML = `${stack[0]} (line ${stack[1].split(':')[1] - 4})`;
+        };
+
+        const write   = text => cli.innerHTML += `${text}`;
+        const writeln = text => write(`${text}\n`);
+        const syslog  = text => writeln(`\n<span class="syslog">${text}</span>`);
+        const wait    = async ms => new Promise((resolve, _) => setTimeout(resolve, ms))
+        const readln  = async () => {
+            const input = document.createElement('input');
+
+            input.type = "text";
+            input.classList.add('readline');
+
+            inputContainer.appendChild(input);
+
+            input.focus();
+
+            return new Promise((resolve, _) => {
+                input.onkeydown = event => {
+                    if (event.key === 'Enter') {
+                        resolve(input.value);
+
+                        input.remove();
+                    }
+                };
+            });
+        };
+    </script>
+    <script id="script"></script>
+  </body>
+</html>
