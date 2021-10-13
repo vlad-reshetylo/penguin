@@ -1,6 +1,6 @@
 <template>
     <div>
-        Basic js syntax is supported plus 4 special cli functions.
+        Basic javascript syntax is supported, plus 4 special cli functions.
         <br>
         <br>
         <b>
