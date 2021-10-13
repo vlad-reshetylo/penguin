@@ -130,13 +130,14 @@
         this.menuMode = 'hidden';
       },
       transform (ast) {
-        const asyncable = ["wait", "readline"];
+        const asyncable = ["wait", "readln"];
 
         traverse(ast, {
           enter(path) {
             if (path.node.type === "Identifier") {
               if (asyncable.includes(path.node.name)) {
                 path.node.name = `await ${path.node.name}`;
+                console.log('recccode')
               }
             }
           },
