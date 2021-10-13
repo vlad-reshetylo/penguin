@@ -1,6 +1,6 @@
 <template>
     <div>      
-        <div class="row row-2">
+        <div class="row row-3">
             <div>
                 <div class="btn" @click="_import">
                     <icon color="#fff" :path="icon('DatabaseImportOutline')"></icon>
@@ -11,6 +11,12 @@
                 <div class="btn" @click="_export">
                     <icon color="#fff" :path="icon('DatabaseExportOutline')"></icon>
                     Export file
+                </div>
+            </div>  
+            <div>
+                <div class="btn" @click="_example">
+                    <icon color="#fff" :path="icon('DatabaseImportOutline')"></icon>
+                    Load Example
                 </div>
             </div>  
         </div>
@@ -54,6 +60,24 @@
 
                 this.$refs.input.click();
             },
+            _example () {
+                this.setCode(`
+function ask (text) {
+    writeln(text);
+    return readln();
+}
+
+const name = ask("What is your name?");
+
+write("Hello World and ");
+write(name + "!");
+`.trim());
+            },
+            setCode (code) {
+                this.$store.commit('saveCode', code);
+
+                window.location.reload();
+            },
             _export () {
                 download('Code.jsi', this.store('code'));
             },
@@ -67,9 +91,7 @@
                 reader.readAsText(target.files[0]);
 
                 reader.onload = () => {
-                    this.$store.commit('saveCode', reader.result);
-
-                    window.location.reload();
+                    this.setCode(reader.result);
                 };
 
                 reader.onerror = () => this.error(reader.error);
