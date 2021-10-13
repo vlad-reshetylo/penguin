@@ -1,4 +1,6 @@
-# Penguin
+# Penguin IDE!
+
+See [DEMO](https://vladreshet.github.io/penguin/)
 
 ## Project setup
 ```

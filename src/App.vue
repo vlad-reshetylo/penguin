@@ -64,6 +64,21 @@
         <div>
           <settings v-show="menuMode === 'Settings'"></settings>
           <file v-show="menuMode === 'File'"></file>
+          <help v-show="menuMode === 'Help'"></help>
+          <div v-show="menuMode === 'About'">
+            <div style="text-align: center; padding-top: 20px;">
+              <img src="android-chrome-192x192.png" style="height: 150px;">
+              <br>
+              <br>
+              Say hello to Penguin!
+              <br>
+              <br>
+              Online IDE for coding on JS with some old-school features
+              <br>
+              <br>
+              Fork me on <a target="__blank" style="color: #6cb1de;" href="https://github.com/VladReshet/penguin">Github!</a>  
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -75,6 +90,7 @@
   import Icon from './components/Icon'
   import Settings from './components/Menu/Settings'
   import File from './components/Menu/File'
+  import Help from './components/Menu/Help'
   import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 
   import {parse} from "@babel/parser";
@@ -89,6 +105,7 @@
       SyncLoader,
       Settings,
       File,
+      Help,
     },
     data () {
       return {
