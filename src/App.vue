@@ -147,19 +147,67 @@
       closeMenu () {
         this.menuMode = 'hidden';
       },
+      /* transform ast to make all function calls async */
       transform (ast) {
-        const asyncable = ["wait", "readln"];
-
         traverse(ast, {
-          enter(path) {
-            if (path.node.type === "Identifier") {
-              if (asyncable.includes(path.node.name)) {
-                path.node.name = `await ${path.node.name}`;
-                console.log('recccode')
+          enter({node}) {
+            if (node.type === "FunctionDeclaration") {
+              node.async = true;
+            }
+
+            if (node.type !== "AwaitExpression") {
+              for (let field in node) {
+                if (node[field] !== null && node[field].type !== undefined) {
+                  if (node[field].type === "CallExpression") {
+                    const call = node[field];
+
+                    node[field] = {
+                      type: "AwaitExpression",
+                      argument: call
+                    }
+                  }
+
+                  if (node[field].type === "FunctionExpression" || node[field].type === "ArrowFunctionExpression") {
+                    node[field].async = true;
+                  }
+                }
+              }
+            }
+
+            if (node.type === "CallExpression") {
+              for (let index in node.arguments) {
+                if (node.arguments[index].type === "CallExpression") {
+                  const call = node.arguments[index];
+
+                  node.arguments[index] = {
+                    type: "AwaitExpression",
+                    argument: call
+                  };
+                }
               }
             }
           },
         });
+
+        // if (node.type === "ExpressionStatement") {
+        //   if (node.expression && node.expression.type === "CallExpression") {
+        //     const call = node.expression;
+
+        //     node.expression = {
+        //       type: "AwaitExpression",
+        //       argument: call
+        //     }
+        //   }
+        // // }
+
+        // if (node.init && node.init.type === "CallExpression") {
+        //   const call = node.init;
+
+        //   node.init = {
+        //     type: "AwaitExpression",
+        //     argument: call
+        //   }
+        // }
 
         return ast;
       },
