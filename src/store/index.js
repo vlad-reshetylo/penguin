@@ -8,7 +8,7 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     editorFont: 12,
-    background: 1,
+    background: 2,
     editorTheme: 'funky',
     code: ''
   },

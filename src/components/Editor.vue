@@ -43,19 +43,12 @@
 
         this.$emit('input', this.code);
       },
-      theme () {
-        this.saveCode();
-
-        window.location.reload();
-      }
     },
     created () {
-      require(`prismjs/themes/prism-${this.theme}.css`);
+      require(`prismjs/themes/prism-funky.css`);
     },
     mounted () {
       this.code = this.store('code');
-
-      setInterval(this.saveCode.bind(this), 60 * 1000);
     }
   }
 </script>

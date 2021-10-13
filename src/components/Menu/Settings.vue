@@ -25,18 +25,6 @@
               <option value="3">Sky</option>
               <option value="4">Stones</option>
             </select>
-          </div> 
-          <div>
-            <label>
-              Background
-            </label>
-            <select v-model="editorTheme">
-              <option value="funky">Funky</option>
-              <option value="dark">Dark</option>
-              <option value="okaidia">Okaidia</option>
-              <option value="tomorrow">Tomorrow</option>
-              <option value="twilight">Twilight</option>
-            </select>
           </div>  
         </div>
         <br>
