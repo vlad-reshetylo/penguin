@@ -2,7 +2,7 @@
   <div>
     <notifications group="main" position="top center" width="500"/>
     <div id="bg" v-bind:style="{
-      backgroundImage: `url(/bg/${store('background')}.jpg)`
+      backgroundImage: `url(bg/${store('background')}.jpg)`
     }"></div>
     <div id="layout">
       <header>
@@ -168,7 +168,7 @@
       createIframe (code) {
         const iframe = document.createElement("iframe");
 
-        iframe.src = "/run.html";
+        iframe.src = "run.html";
 
         iframe.onload = () => {
           iframe.contentDocument
