@@ -2,7 +2,7 @@
 
 See [DEMO](https://vladreshet.github.io/penguin/)
 
-[ABOUT PROJECT (ru)][https://habr.com/ru/post/583330/]
+ABOUT PROJECT (ru) - https://habr.com/ru/post/583330/
 
 ## Project setup
 ```
