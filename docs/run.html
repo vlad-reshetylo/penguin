@@ -28,7 +28,7 @@
             $('#error-message').innerHTML = `${stack[0]} (line ${stack[1].split(':')[1] - 4})`;
         };
 
-        const write   = text => cli.innerHTML += text.replace(/[\u00A0-\u9999<>\&]/g, i => `&#${i.charCodeAt(0)};`);
+        const write   = text => cli.innerHTML += `${text}`.replace(/[\u00A0-\u9999<>\&]/g, i => `&#${i.charCodeAt(0)};`);
         const writeln = text => write(`${text}\n`);
         const syslog  = text => cli.innerHTML += `\n<span class="syslog">${text}</span>\n`;
         const wait    = async ms => new Promise((resolve, _) => setTimeout(resolve, ms))
