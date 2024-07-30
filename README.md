@@ -1,8 +1,6 @@
 # Penguin IDE!
 
-See [DEMO](https://vladreshet.github.io/penguin/)
-
-ABOUT PROJECT (ru) - https://habr.com/ru/post/583330/
+See [DEMO](https://vlad-reshetylo.github.io/penguin/)
 
 ## Project setup
 ```
